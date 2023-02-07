@@ -17,17 +17,18 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field. (DONE)
 
-    public Job(int id) {
-        this.id = nextId;
+    public Job() {
+        id = nextId;
         nextId++;
     }
 
-    public Job(String name, Employer employer, Location location, PositionType positionType){
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
         this();
         this.name = name;
         this.employer = employer;
         this.location = location;
-        this.positionType = positionType;;
+        this.positionType = positionType;
+        this.coreCompetency = coreCompetency;
     }
 
 
@@ -37,7 +38,7 @@ public class Job {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Job)) return false;
+        if (o==null || getClass() !=o.getClass()) return false;
         Job job = (Job) o;
         return id == job.id;
     }
@@ -95,5 +96,29 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-
+    @Override
+    public String toString() {
+        if(getName() == ""){
+            setName("Data not available");
+        }
+        if(getEmployer().getValue( )== ""){
+            employer.setValue("Data not available");
+        }
+        if (getLocation().getValue( )== ""){
+            location.setValue("Data not available");
+        }
+        if (getPositionType().getValue( )== "") {
+            positionType.setValue("Data not available");
+        }
+        if(getCoreCompetency().getValue( )== ""){
+            coreCompetency.setValue("Data not available");
+        }
+        return "\n" +
+                "ID: " + getId() + '\n'+
+                "Name: " + getName() + '\n' +
+                "Employer: " + getEmployer() + '\n' +
+                "Location: " + getLocation() + '\n' +
+                "Position Type: " + getPositionType() + '\n' +
+                "Core Competency: " + getCoreCompetency() + '\n';
+    }
 }
