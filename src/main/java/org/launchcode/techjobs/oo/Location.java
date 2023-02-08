@@ -21,7 +21,7 @@ public class Location extends JobField {
 //
 //}
 //
-    public Location(String value) {
+    public Location(String value) {    // because we are exending the abstract jobfield class, we no longer need individual getters, setters, constructors, ets. all of those are passed down from the JobField class to this class. Here, the only thing we need to do is create a constructor that calls the superclass constructor, which sets the "value" field of the Location object to the parameter that is passed in. This same logic gets repeated in the other classes that extend the JobField class. We do this to simplify the code, and prevent repetition. There is no need to create constructors and getters and setters that all do the same thing, when they can be passed down to the class from a superclass.
         super(value);
     }
 }
